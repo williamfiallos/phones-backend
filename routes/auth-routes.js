@@ -89,8 +89,10 @@ router.post("/login", (req, res, next) => {
       res.status(401).json(failureDetails);
       return;
     }
+    console.log("here")
 
     req.login(userDoc, (err) => {
+      console.log("there")
       if (err) {
         res.status(500).json({ message: 'Something went wrong while login!' });
         return;
