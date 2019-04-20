@@ -15,5 +15,14 @@ router.post('/phones', (req, res, next) => {
   .catch( err => next(err) );
 });
 
+// .get() => get the list of phones from the DB
+router.get('/phones', (req, res, next) => {
+  Phone.find()
+  .sort({ createdAt: -1 })
+  .limit(10)
+  // send the received results from the DB as JSON to the client
+  .then( phonesFromDB => res.json(phonesFromDB) )
+  .catch( err => next(err) );
+});
 
 module.exports = router;
